@@ -147,7 +147,7 @@ import json
 #     p_data=Student.objects.get(id=pk)
 #     print(p_data)
 #     print(type(p_data))
-#     p_data=model_to_dict(p_data) 
+#     p_data=model_to_dict(p_data)   x
 #     print(p_data)
 #     print(type(p_data))
 #     return HttpResponse(json.dumps(p_data),content_type="application/json")
@@ -327,6 +327,8 @@ def all_data(req):
     j_data = list(p_data)
     return JsonResponse(j_data,safe=False)
 
+
+
 '''One Specific user Data Update'''
 @csrf_exempt
 def Student_detail(req,pk):
@@ -336,13 +338,17 @@ def Student_detail(req,pk):
         return JsonResponse(msg,safe=False)
     if req.method == 'GET':
         data = Student.objects.get(id=pk)
-        python_data = {
-            "id": data.id,
-            "name": data.name,
-            "age": data.age,
-            "email": data.email,
-            "contact": data.contact
-        }
+        print(data)
+        # python_data = {
+        #     "id": data.id,
+        #     "name": data.name,
+        #     "age": data.age,
+        #     "email": data.email,
+        #     "contact": data.contact
+        # }
+
+        '''model to dict sirf ek object ko convert krte hai dictionary se'''
+        python_data = model_to_dict(data)  
         return JsonResponse(python_data)
 
 

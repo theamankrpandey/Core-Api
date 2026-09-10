@@ -7,7 +7,12 @@ class Student(models.Model):
     age=models.IntegerField()
     email=models.EmailField()
     contact=models.CharField(max_length=20)
+    def __str__(self):
+        return self.name
     
 class User(models.Model):
     name=models.CharField(max_length=30)
     age=models.IntegerField()
+
+    def __str__(self):
+        return self.name
